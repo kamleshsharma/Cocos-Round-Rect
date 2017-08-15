@@ -5,11 +5,11 @@ var RectType = {
     LEFT:'left',
 }
 function getVertices(origin, destination, fillColor, lineWidth, lineColor, type, rad = null){
-    let vertices = [];
-    const radius = rad || 8;
-    const segments = 20;
-    const coef = 2.0 * Math.PI / segments;
-    let center = null;
+    var vertices = [];
+    var radius = rad || 8;
+    var segments = 20;
+    var coef = 2.0 * Math.PI / segments;
+    var center = null;
     if(type !== RectType.TOP){
         //bottom line
         if(type === RectType.RIGHT){
@@ -23,10 +23,10 @@ function getVertices(origin, destination, fillColor, lineWidth, lineColor, type,
                 x: destination.x - radius,
                 y: origin.y + radius
             } 
-            for (let i = segments/2; i <= (segments - segments/4); i++) {
-                let rads = i * coef;
-                let j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
-                let k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
+            for (var i = segments/2; i <= (segments - segments/4); i++) {
+                var rads = i * coef;
+                var j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
+                var k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
                 vertices.push(cc.p(j, k));
             }            
         }else{
@@ -43,10 +43,10 @@ function getVertices(origin, destination, fillColor, lineWidth, lineColor, type,
             x: destination.x - radius,
             y: destination.y - radius
         }
-        for (let i = (segments - segments/4); i <= segments; i++) {
-            let rads = i * coef;
-            let j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
-            let k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
+        for (var i = (segments - segments/4); i <= segments; i++) {
+            var rads = i * coef;
+            var j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
+            var k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
             vertices.push(cc.p(j, k));
         }
     }else{
@@ -59,10 +59,10 @@ function getVertices(origin, destination, fillColor, lineWidth, lineColor, type,
             x: origin.x + radius,
             y: destination.y - radius
         } 
-        for (let i = 0; i <= segments/4; i++) {
-            let rads = i * coef;
-            let j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
-            let k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
+        for (var i = 0; i <= segments/4; i++) {
+            var rads = i * coef;
+            var j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
+            var k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
             vertices.push(cc.p(j, k));
         }
     }else{
@@ -75,10 +75,10 @@ function getVertices(origin, destination, fillColor, lineWidth, lineColor, type,
             x: origin.x + radius,
             y: origin.y + radius
         } 
-        for (let i = segments/4; i <= segments/2; i++) {
-            let rads = i * coef;
-            let j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
-            let k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
+        for (var i = segments/4; i <= segments/2; i++) {
+            var rads = i * coef;
+            var j = radius * Math.cos(rads + cc.degreesToRadians(90)) + center.x;
+            var k = radius * Math.sin(rads + cc.degreesToRadians(90)) + center.y;
             vertices.push(cc.p(j, k));
         }                
     }else{
@@ -87,7 +87,7 @@ function getVertices(origin, destination, fillColor, lineWidth, lineColor, type,
     return vertices;
 }
 
-const RoundRect = cc.DrawNode.extend({
+var RoundRect = cc.DrawNode.extend({
     ctor: function(width, height, fillColor, lineWidth = 1, lineColor, type = null, rad = null){
         this._super();
         this.width = width;
@@ -109,7 +109,7 @@ const RoundRect = cc.DrawNode.extend({
             lineColor = lineColor || this.getDrawColor();
             if(lineColor.a == null)
                 lineColor.a = 255;
-            let element = new cc._DrawNodeElement(cc.DrawNode.TYPE_POLY);
+            var element = new cc._DrawNodeElement(cc.DrawNode.TYPE_POLY);
             element.verts = getVertices(origin, destination, fillColor, lineWidth, lineColor, type, rad);
             element.lineWidth = lineWidth;
             element.lineColor = lineColor;
@@ -136,4 +136,3 @@ const RoundRect = cc.DrawNode.extend({
         }
     }
 });
-export {RoundRect as default, RectType};
