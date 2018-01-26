@@ -1,14 +1,18 @@
 # Cocos-Round-Rect
 
-It is the cocos draw node class that can be used to make rounded rect
+It is extension of cocos draw node class that can be used to make rounded rect
 
-HOW TO USE IT:
+![image](https://user-images.githubusercontent.com/12015581/35440914-7fa279a6-02c7-11e8-8ec5-d02214c2aa8d.png)
+
+### HOW TO USE IT:
 
 Copy and paste Roundrect.js into your project folder and add it to your project.js JSON file
 
-For Example:
+### Example:
 
 var firstRoundRect = new RoundRect(width, height, bgColor, borderWidth, borderColor, borderRadius, type);
+
+### Arguments descriptions
 
 @param {Number} [height]  = Hieght of rounded rectangle
 
@@ -31,6 +35,9 @@ var firstRoundRect = new RoundRect(width, height, bgColor, borderWidth, borderCo
       
       
       
-Note:
+### Note:
+
 The Above example works well when compile for native platform
 It has dependecies on cc.drawnode
+
+Start Coding
